@@ -5,24 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".services.ServiceActivity">
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btnService"
+        android:id="@+id/btn_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Service"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_stop_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop Service"/>
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_start_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Service Activity"/>
+        android:text="STOP SERVICE"/>
 
 </LinearLayout>

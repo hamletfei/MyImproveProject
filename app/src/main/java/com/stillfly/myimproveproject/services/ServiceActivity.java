@@ -1,20 +1,19 @@
-package com.stillfly.myimproveproject;
+package com.stillfly.myimproveproject.services;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.stillfly.myimproveproject.services.MyService;
-import com.stillfly.myimproveproject.services.ServiceActivity;
+import com.stillfly.myimproveproject.R;
 
-public class MainActivity extends AppCompatActivity {
+public class ServiceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_service);
         //启动服务
-        findViewById(R.id.btnService).setOnClickListener(view -> {
+        findViewById(R.id.btn_service).setOnClickListener(view->{
             Intent intent = new Intent(this, MyService.class);
             startService(intent);
         });
@@ -24,9 +23,5 @@ public class MainActivity extends AppCompatActivity {
             stopService(intent);
         });
 
-        findViewById(R.id.btn_start_act).setOnClickListener(view -> {
-            Intent intent = new Intent(this, ServiceActivity.class);
-            startActivity(intent);
-        });
     }
 }
