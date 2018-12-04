@@ -15,7 +15,7 @@ public class BindServiceActivity extends AppCompatActivity {
     private static final String TAG = "BindServiceActivity";
 
     private ServiceConnection mServiceConnection;
-    private BindService mBindService;
+    private boolean isServiceBounded = false;//用于判断是否与 Service 成功连接
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +30,26 @@ public class BindServiceActivity extends AppCompatActivity {
 
         //解绑 Service
         findViewById(R.id.btn_unbind_service).setOnClickListener(view -> {
-            unbindService(mServiceConnection);
+            safeUnbindService();
         });
 
         findViewById(R.id.btn_nav_service).setOnClickListener(view -> {
             Intent intent = new Intent(this, BindService2Activity.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        safeUnbindService();
+    }
+
+    private void safeUnbindService() {
+        if (isServiceBounded) {
+            unbindService(mServiceConnection);
+            isServiceBounded = false;
+        }
     }
 
     private void initServiceConnection() {
@@ -49,10 +62,10 @@ public class BindServiceActivity extends AppCompatActivity {
              */
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
+                isServiceBounded = true;
                 Log.i(TAG, "onServiceConnected");
                 BindService.MyBinder binder = (BindService.MyBinder) service;
-                mBindService = binder.getBindService();
-                mBindService.callService();
+                binder.getBindService().callService();
             }
 
             /**
@@ -62,6 +75,7 @@ public class BindServiceActivity extends AppCompatActivity {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 Log.i(TAG, "onServiceDisconnected");
+                isServiceBounded = false;
             }
         };
     }
