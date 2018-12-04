@@ -5,25 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btnService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Service"/>
-
-    <Button
-        android:id="@+id/btn_stop_service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop Service"/>
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_start_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Service Activity"/>
+    tools:context=".services.BindServiceActivity">
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_bind_service"
@@ -31,17 +13,16 @@
         android:layout_height="wrap_content"
         android:text="Bind Service"/>
 
-    <android.support.v7.widget.AppCompatButton
+        <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_unbind_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bind Service"/>
+        android:text="UnBind Service"/>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_bind_act"
+        android:id="@+id/btn_nav_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start BindService Activity"/>
-
+        android:text="BindService2Act"/>
 
 </LinearLayout>

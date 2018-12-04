@@ -17,9 +17,17 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".services.MyService"></service>
+        <service android:name=".services.MyService" />
 
-        <activity android:name=".services.ServiceActivity"></activity>
+        <activity android:name=".services.ServiceActivity" />
+
+        <service
+            android:name=".services.BindService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".services.BindServiceActivity"></activity>
+        <activity android:name=".services.BindService2Activity"></activity>
     </application>
 
 </manifest>
