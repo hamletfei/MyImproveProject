@@ -5,25 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".services.ServiceMixActivity">
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btnService"
+        android:id="@+id/btn_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Service"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_stop_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop Service"/>
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_start_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Service Activity"/>
+        android:text="STOP SERVICE"/>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_bind_service"
@@ -35,25 +29,12 @@
         android:id="@+id/btn_unbind_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bind Service"/>
+        android:text="UnBind Service"/>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_bind_act"
+        android:id="@+id/btn_all_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start BindService Activity"/>
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_handle_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Handle Test"/>
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_intent_service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Intent Service"/>
-
+        android:text="Start and bind Service"/>
 
 </LinearLayout>

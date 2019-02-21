@@ -25,6 +25,7 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         System.out.println("intent = [" + intent + "], flags = [" + flags + "], startId = [" + startId + "]");
         Log.i(TAG, "MyService onStartCommand");
+        Log.i(TAG, "current thread" + Thread.currentThread());
         return super.onStartCommand(intent, flags, startId);
     }
 

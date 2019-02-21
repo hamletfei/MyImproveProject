@@ -11,17 +11,34 @@ import android.util.Log;
 
 import com.stillfly.myimproveproject.R;
 
-public class BindServiceActivity extends AppCompatActivity {
-    private static final String TAG = "BindServiceActivity";
+public class ServiceMixActivity extends AppCompatActivity {
+
+    private static final String TAG = "ServiceMixActivity";
 
     private ServiceConnection mServiceConnection;
     private boolean isServiceBounded = false;//用于判断是否与 Service 成功连接
+    BindService.MyBinder binder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bind_service);
+        setContentView(R.layout.activity_service_mix);
         initServiceConnection();
+        //启动服务
+        findViewById(R.id.btn_service).setOnClickListener(view->{
+            Intent intent = new Intent(this, BindService.class);
+            startService(intent);
+        });
+        //停止服务
+        findViewById(R.id.btn_stop_service).setOnClickListener(view -> {
+//            Intent intent = new Intent(this, BindService.class);
+//            stopService(intent);
+            if (this.binder != null) {
+                this.binder.getBindService().stop(1);
+//                this.binder.getBindService().stop(2);
+            }
+        });
+
         //绑定 Service
         findViewById(R.id.btn_bind_service).setOnClickListener(view -> {
             Intent intent = new Intent(this, BindService.class);
@@ -33,10 +50,16 @@ public class BindServiceActivity extends AppCompatActivity {
             safeUnbindService();
         });
 
-        findViewById(R.id.btn_nav_service).setOnClickListener(view -> {
-            Intent intent = new Intent(this, ServiceMixActivity.class);
-            startActivity(intent);
+        //一步 start 加 bind
+        findViewById(R.id.btn_all_service).setOnClickListener(view -> {
+            Intent intent = new Intent(this, BindService.class);
+            startService(intent);
+            Intent intent2 = new Intent(this, BindService.class);
+            bindService(intent2, mServiceConnection, Context.BIND_AUTO_CREATE);
         });
+
+
+
     }
 
     @Override
@@ -65,7 +88,7 @@ public class BindServiceActivity extends AppCompatActivity {
                 isServiceBounded = true;
                 Log.i(TAG, "onServiceConnected");
                 Log.i(TAG, "onServiceConnected" + Thread.currentThread());
-                BindService.MyBinder binder = (BindService.MyBinder) service;
+                binder = (BindService.MyBinder) service;
                 binder.getBindService().callService();
             }
 

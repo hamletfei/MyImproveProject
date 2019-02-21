@@ -25,9 +25,16 @@
             android:name=".services.BindService"
             android:enabled="true"
             android:exported="true" />
+        <service
+            android:name=".services.intentservice.IntentDemoService"
+            android:enabled="true"
+            android:exported="true" />
 
-        <activity android:name=".services.BindServiceActivity"></activity>
-        <activity android:name=".services.BindService2Activity"></activity>
+        <activity android:name=".services.BindServiceActivity" />
+        <activity android:name=".services.BindService2Activity" />
+        <activity android:name=".services.BindService3Activity" />
+        <activity android:name=".services.ServiceMixActivity" />
+        <activity android:name=".services.IntentServiceActivity"></activity>
     </application>
 
 </manifest>

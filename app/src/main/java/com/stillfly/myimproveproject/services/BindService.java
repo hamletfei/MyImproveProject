@@ -25,12 +25,14 @@ public class BindService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         Log.i(TAG, "BindService onBind");
+        Log.i(TAG, "BindService onBind " + Thread.currentThread());
         return mMyBinder;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG, "BindService onStartCommand");
+        Log.i(TAG, "onStartCommand" + Thread.currentThread());
         System.out.println("intent = [" + intent + "], flags = [" + flags + "], startId = [" + startId + "]");
         return super.onStartCommand(intent, flags, startId);
     }
@@ -44,7 +46,7 @@ public class BindService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         Log.i(TAG, "BindService onUnbind");
-        return super.onUnbind(intent);
+        return true;
     }
 
     @Override
@@ -55,6 +57,10 @@ public class BindService extends Service {
 
     public void callService() {
         Log.i(TAG, "BindService callService");
+    }
+
+    public void stop(int startId) {
+        stopSelf(startId);
     }
 
     public class MyBinder extends Binder {

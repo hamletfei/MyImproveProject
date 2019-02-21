@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.stillfly.myimproveproject.services.BindServiceActivity;
+import com.stillfly.myimproveproject.services.IntentServiceActivity;
 import com.stillfly.myimproveproject.services.MyService;
 import com.stillfly.myimproveproject.services.ServiceActivity;
+import com.stillfly.myimproveproject.thread.ThreadOne;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_bind_act).setOnClickListener(view -> {
             Intent intent = new Intent(this, BindServiceActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.btn_handle_test).setOnClickListener(view -> {
+            new ThreadOne(this).start();
+        });
+
+        findViewById(R.id.btn_intent_service).setOnClickListener(view -> {
+            Intent intent = new Intent(this, IntentServiceActivity.class);
             startActivity(intent);
         });
     }
